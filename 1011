@@ -1,0 +1,57 @@
+sudo apt update 
+sudo apt install -y unzip xvfb libxi6 libgconf-2-4 
+sudo apt install default-jdk 
+google-chrome --version
+
+wget https://chromedriver.storage.googleapis.com/94.0.4606.61/chromedriver_linux64.zip 
+unzip chromedriver_linux64.zip 
+
+sudo mv chromedriver /usr/bin/chromedriver 
+sudo chown root:root /usr/bin/chromedriver 
+sudo chmod +x /usr/bin/chromedriver
+
+wget https://selenium-release.storage.googleapis.com/3.141/selenium-server-standalone-3.141.59.jar 
+mv selenium-server-standalone-3.141.59.jar selenium-server-standalone.jar
+
+wget http://www.java2s.com/Code/JarDownload/testng/testng-6.8.7.jar.zip 
+unzip testng-6.8.7.jar.zip 
+
+xvfb-run java -Dwebdriver.chrome.driver=/usr/bin/chromedriver -jar selenium-server-standalone.jar
+
+chromedriver --url-base=/wd/hub
+
+
+------------------------------------------------------------------------------------
+import java.io.IOException;
+ 
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.Test;
+ 
+public class TecAdminSeleniumTest {
+ 
+        public static void main(String[] args) throws IOException, InterruptedException {
+                System.setProperty("webdriver.chrome.driver", "/usr/bin/chromedriver");
+                ChromeOptions chromeOptions = new ChromeOptions();
+                chromeOptions.addArguments("--headless");
+                chromeOptions.addArguments("--no-sandbox");
+ 
+                WebDriver driver = new ChromeDriver(chromeOptions);
+ 
+                driver.get("https://google.com");
+ 
+                Thread.sleep(1000);
+ 
+                if (driver.getPageSource().contains("I'm Feeling Lucky")) {
+                        System.out.println("Pass");
+                } else {
+                        System.out.println("Fail");
+                }
+                driver.quit();
+        }
+}
+
+export CLASSPATH=".:selenium-server-standalone.jar:testng-6.8.7.jar" 
+javac TecAdminSeleniumTest.java 
+java TecAdminSeleniumTest 
