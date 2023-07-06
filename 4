@@ -1,0 +1,5 @@
+Add the framework repository key:
+$ wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add
+
+Next, link the repository of the Debian packages to the sources.list of the server:
+$ sudo sh -c 'echo deb http://pkg.jenkins.io/debian-stable binary/ >/etc/apt/sources.list.d/jenkins.list'
