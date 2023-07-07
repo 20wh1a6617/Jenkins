@@ -1,0 +1,79 @@
+• Git is a version control system which helps you track changes made to files overtime. Git
+maintains a local repository, where you commit changes to the project before pushing
+them to the central repository on GitHub.
+• Github hosts Git repositories and provides developers with tools 
+
+Open terminal 
+Install Git - sudo apt-get install git
+Version check - git --version
+
+Git Commands: working with local repositories
+
+git init – the command git init is used to create an empty Git repository. After the git init
+command is used, a .git folder is created in the directory with some subdirectories. Once
+the repository is initialized, the process of creating other files begins.
+
+git add – add command is used afor checking the status of the files, to add those files to the
+staging area. Before running commit command, “git add” is used to add any new or modified
+files.
+git add
+
+git commit – the commit command makes sure that the changes are saved to the local
+repository. The command “git commit –m <message>” allows you to describe everyone and
+help them understand what has happened.
+git commit –m “commit message”
+
+git status - the git status command tells the current state of the repository.Also, if there are no changes, it will show the message no
+changes to commit, working directory clean.
+
+git config - the git config command is used to configure the user.name and user.email. this 
+specifies what email id and username will be used from a local repository. When git config is
+used with –global flag, it writes the settings to all repositories on the computer.
+git config –global user.name “any username”
+git config –global user.email<email id>
+
+git branch – the git branch command is used to determine what branch the local repository is
+on. The command enables adding and deleting a branch.
+#create a new branch
+git branch <branch_name>
+#list all remote or local branches
+git branch –a
+#delete a branch
+git branch –d <branch_name>
+
+git checkout - the git checkout command is used to switch branches, whenever the work is to
+be started on a different branch. The command works on three separate entities: files, commits
+and branches.
+#checkout an existing branch
+git checkout <branch_name>
+#checkout and create a new branch with that name
+git checkout –b<new_branch>
+
+git merge - the git merge command is used to integrate the branches together. The command
+combines the changes from one branch to another branch. It is used to merge the changes in the staging branch to the stable branch.
+git merge <branch_name>
+
+git remote - the git remote command is used to create, view and delete connections to other
+repositories. The connections here are not like direct links into other repositories, but as
+bookmarks that serve as convenient names to be used as a reference.
+git remote add origin <address>
+
+git clone - the git clone command is used to create a local working copy of an existing remote
+repository. The command downloads the remote repository to the computer. It is equivalent to
+the git init command when working with a remote repository.
+git clone <remote_URL>
+
+git pull- the git pull command is used to fetch and merge changes from the remote repository
+to the local repository.
+git pull <branch_name> <remote URL>
+
+git push - the command git push is used to transfer the commits or pushing the content from
+the local repository to the remote repository. The command is used after a local repository has
+been modified, and the modifications are to be shared with the remote team members.
+git push –u origin master
+
+
+git log - the git log command shows the order of the commit history for a repository. The
+command helps in understanding the state of the current branch by showing the commits that
+lead to this state.
+git log
